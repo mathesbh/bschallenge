@@ -32,6 +32,9 @@ namespace BSImoveis
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddAuthorization(opt => {
+                opt.AddPolicy("SiteUser", policy => policy.RequireClaim("Type", "User"));
+            });
             services.AddControllersWithViews();
            services.AddRazorPages();
         }
