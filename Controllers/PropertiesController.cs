@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BSImoveis.Data;
 using BSImoveis.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BSImoveis.Controllers
 {
+    [Authorize(Policy = "SiteUser")]
     public class PropertiesController : Controller
     {
         private readonly ApplicationDbContext _context;
